@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Duggu 💖</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+color:white;
+overflow:hidden;
+
+background:linear-gradient(-45deg,#ff4d6d,#ff758c,#ff7eb3,#ff9a9e);
+background-size:400% 400%;
+animation:bg 8s infinite;
+}
+
+@keyframes bg{
+0%{background-position:0%}
+50%{background-position:100%}
+100%{background-position:0%}
+}
+
+.box{
+margin-top:60px;
+padding:20px;
+animation:fade 0.8s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+h1{font-size:30px;text-shadow:0 0 10px #fff;}
+h2{font-size:24px;text-shadow:0 0 10px #fff;}
+
+input,button{
+padding:12px;
+margin:10px;
+border:none;
+border-radius:12px;
+font-size:18px;
+width:80%;
+max-width:300px;
+}
+
+button{
+background:#ff1744;
+color:white;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 10px rgba(255,0,100,0.6);
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px rgba(255,0,100,1);
+}
+
+.no{
+background:#333;
+position:absolute;
+}
+
+/* stars */
+.star{
+position:fixed;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 8px white;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px)}
+100%{transform:translateY(100vh)}
+}
+
+/* hearts */
+.heart{
+position:fixed;
+font-size:22px;
+animation:float 4s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(1)}
+100%{transform:translateY(-10vh) scale(1.5)}
+}
+
+/* confetti */
+.confetti{
+position:fixed;
+font-size:20px;
+animation:conf 3s linear infinite;
+}
+
+@keyframes conf{
+0%{transform:translateY(-10vh) rotate(0deg)}
+100%{transform:translateY(100vh) rotate(360deg)}
+}
+
+.gif{
+width:120px;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
+</audio>
+
+<!-- START -->
+<div class="box" id="start">
+<h1>Hey Duggu 💖</h1>
+<p>End tak zaroor dekhna… 💫</p>
+<button onclick="startApp()">Start 🎁</button>
+</div>
+
+<!-- PASSWORD -->
+<div class="box" id="l1" style="display:none;">
+<h2>Password 🤭</h2>
+<input id="pass">
+<button onclick="c1()">Submit</button>
+<p id="m1"></p>
+</div>
+
+<!-- NICKNAME -->
+<div class="box" id="l2" style="display:none;">
+<h2>Ek nickname batao jo sirf main bulata hu 💭</h2>
+<input id="n2">
+<button onclick="c2()">Submit</button>
+<p id="m2"></p>
+</div>
+
+<!-- LOVE -->
+<div class="box" id="l3" style="display:none;">
+<h2>Sabse jyada pyar kaun karta hai? ❤️</h2>
+<input id="n3">
+<button onclick="c3()">Submit</button>
+<p id="m3"></p>
+<div id="cry"></div>
+</div>
+
+<!-- NIGHT WALK -->
+<div class="box" id="l4" style="display:none;">
+<h2>Night walk pasand hai? 🌙</h2>
+<button onclick="tease()">Haa</button>
+<button onclick="next('l4','l5')">Bahut jyada ❤️</button>
+<p id="m4"></p>
+</div>
+
+<!-- WALK -->
+<div class="box" id="l5" style="display:none;">
+<h2>Shaam ko walk pe chale? 😚</h2>
+<button onclick="goFinal()">Yes</button>
+<button class="no" id="no">No</button>
+</div>
+
+<!-- FINAL -->
+<div class="box" id="final" style="display:none;">
+<h2>🎉 Happy Birthday Duggu 🎂</h2>
+
+<p>
+Aapke Buggu ke or se ek chhota sa surprise 🥰<br><br>
+God bless mera bachaa 🤞🧿💫<br><br>
+Meri jindagi main aane k liye thankyou 🥰<br><br>
+Main humesa esa hi rahunga aur itna hi pyar karunga 💖<br><br>
+Har ek pal mera dil bas aapke naam se dhadkega ❤️<br><br>
+Aap humesa khus rahe meri pyari duggu 💕<br><br>
+<b>I LOVE YOU 3000 ❤️</b>
+</p>
+</div>
+
+<script>
+let attempt=0;
+
+/* start */
+function startApp(){
+document.getElementById("start").style.display="none";
+document.getElementById("l1").style.display="block";
+
+let music=document.getElementById("music");
+music.play().catch(()=>{});
+}
+
+/* password */
+function c1(){
+if(pass.value==="1308"){
+next('l1','l2')
+}else{
+m1.innerText="Wrong 😭"
+}
+}
+
+/* nickname */
+function c2(){
+let v=["roshni","aishu","rapunzel","miss marvel"];
+if(v.includes(n2.value.toLowerCase())){
+next('l2','l3')
+}else{
+attempt++;
+m2.innerText="phir se try karo 😭";
+}
+}
+
+/* love */
+function c3(){
+let a=n3.value.toLowerCase();
+if(a==="aap"||a==="buggu"||a==="arjun"){
+next('l3','l4')
+}else{
+cry.innerHTML='<img class="gif" src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif">';
+}
+}
+
+/* tease */
+function tease(){
+m4.innerText="sirf haa nahi chalega 😏";
+}
+
+/* no move */
+let noBtn=document.getElementById("no");
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.left=Math.random()*80+"%";
+noBtn.style.top=Math.random()*80+"%";
+});
+
+/* final */
+function goFinal(){
+next('l5','final');
+effects();
+}
+
+/* next */
+function next(a,b){
+document.getElementById(a).style.display="none";
+document.getElementById(b).style.display="block";
+}
+
+/* effects */
+function effects(){
+
+/* stars */
+for(let i=0;i<80;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(s);
+}
+
+/* hearts */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+},300);
+
+/* confetti */
+setInterval(()=>{
+let c=document.createElement("div");
+c.className="confetti";
+c.innerHTML="🎉";
+c.style.left=Math.random()*100+"%";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+},200);
+
+}
+</script>
+
+</body>
+</html>
