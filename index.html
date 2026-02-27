@@ -114,22 +114,9 @@ margin-top:10px;
 
 <body>
 
-function start(){
-    document.getElementById("start").style.display="none";
-    document.getElementById("l1").style.display="block";
-
-    let m = document.getElementById("music");
-    m.src = "music.mp3";
-    m.volume = 0.7;
-
-    let playPromise = m.play();
-
-    if(playPromise !== undefined){
-        playPromise.catch(()=>{
-            document.body.onclick = () => m.play();
-        });
-    }
-}
+<audio id="music" loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
+</audio>
 
 <!-- START -->
 <div class="box" id="start">
